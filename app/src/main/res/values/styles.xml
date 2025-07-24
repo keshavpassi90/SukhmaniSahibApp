@@ -1,0 +1,66 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorLoader</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorLoader</item>
+        <item name="colorA">@color/colorA</item>
+        <item name="colorB">@color/colorB</item>
+        <item name="colorC">@color/colorC</item>
+        <item name="colorD">@color/colorD</item>
+        <item name="colorE">@color/colorE</item>
+        <item name="white">@color/white</item>
+        <item name="gray">@color/gray</item>
+        <item name="prev">@color/colorPrev</item>
+        <item name="darkgray">@color/darkgray</item>
+        <item name="light">@color/light</item>
+        <item name="colorSplash">@color/colorLoader</item>
+        <item name="sidebar_logo_bg">@color/colorLoader</item>
+        <item name="graybg">@color/graybg</item>
+        <item name="borderbg">@color/borderbg</item>
+
+    </style>
+
+    <style name="AppThemeDark" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/darkthemecolorPrimary</item>
+        <item name="colorPrimaryDark">@color/darkthemecolorPrimaryDark</item>
+        <item name="colorAccent">@color/darkthemecolorAccent</item>
+        <item name="colorA">@color/darkthemecolorA</item>
+        <item name="colorB">@color/darkthemecolorB</item>
+        <item name="colorC">@color/darkthemecolorC</item>
+        <item name="colorD">@color/darkthemecolorD</item>
+        <item name="colorE">@color/darkthemecolorE</item>
+        <item name="white">@color/darkthemewhite</item>
+        <item name="gray">@color/darkthemegray</item>
+        <item name="prev">@color/colorPrevDark</item>
+        <item name="darkgray">@color/darkthemedarkgray</item>
+        <item name="light">@color/darkthemelight</item>
+        <item name="sidebar_logo_bg">@color/darkthemesidebar_logo_bg</item>
+        <item name="graybg">@color/darkthemegraybg</item>
+        <item name="borderbg">@color/darkthemeborderbg</item>
+
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppThemeDark.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.SplashScreen" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/colorLoader</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.Loader">
+        <item name="colorAccent">@color/colorLoader</item>
+    </style>
+</resources>

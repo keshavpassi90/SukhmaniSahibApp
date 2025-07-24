@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+////apply plugin: 'com.google.firebase.crashlytics'
+
+android {
+    namespace 'com.appoapp.sukhmanisahib' // ✅ Update this to your actual package name
+
+    compileSdk = 35
+
+    defaultConfig {
+        applicationId "com.appoapp.sukhmanisahib"
+        minSdk = 21
+        targetSdk = 35
+        versionCode = 6
+        versionName = "6.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'androidx.navigation:navigation-fragment:2.9.2'
+    implementation 'androidx.navigation:navigation-ui:2.9.2'
+    // Import the BoM for the Firebase platform
+    implementation 'com.google.firebase:firebase-crashlytics:18.4.1'
+    implementation 'com.google.android.gms:play-services-ads:22.0.0' // Check for the latest version
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'androidx.media:media:1.6.0'
+
+}
+//apply plugin: 'com.google.gms.google-services'

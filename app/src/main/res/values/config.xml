@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sukhmani Sahib</string>
+    <string name="info_app">Sukhmani Sahib Path and Audio</string>
+    <string name="info_copyright">We request you to cover your head at the time of simran</string>
+    <string name="loading">Loading</string>
+    <string name="home">Home</string>
+    <string name="with_meanings">With Meanings</string>
+    <string name="simple">Simple</string>
+
+    <string name="shareApp">Share App</string>
+    <string name="rateApp">Rate this App</string>
+    <string name="rateAppText">Do you have a few seconds to rate 5 star this app? We want to hear your opinion.</string>
+    <string name="version">App version</string>
+    <string name="versionCode">1.0</string>
+    <string name="shareAppText">If you have a minute, can you please help us to spread in the world about this application.</string>
+    <string name="checkUpdate">Check for app update</string>
+    <string name="privacy">Privacy Policy</string>
+    <string name="privacy_url">https://www.termsfeed.com/live/ff616024-9313-4cd6-a7da-6eabbf7ef6c8</string>
+    <string name="contactus">Contact Us</string>
+    <string name="supportEmail">keshavpassi90@gmail.com</string>
+    <string name="feedback">Feedback</string>
+
+    <string name="mp3url">https://media.sikhnet.com/Bhai%20Niranjan%20Singh%20-%20Sukhmani%20Sahib.mp3</string>
+    <string name="songfile">sukhmani-sahib</string>
+    <string name="songtitle">Sukhmani Sahib</string>
+    <string name="playing_shabad">ਸੁਖਮਨੀ ਸਾਹਿਬ</string>
+
+    <!-- Set show ads [ true / false ] -->
+    <string name="showAds">true</string>
+    <string name="showSplashAd">true</string>
+    <string name="showBannerAd">true</string>
+
+    <!-- Admob Ad details -->
+<!--    <string name="banner_ad_id">ca-app-pub-3940256099942544/6300978111</string>-->
+<!--    <string name="interstitial_ad_id">ca-app-pub-3940256099942544/1033173712</string>-->
+<!--    <string name="app_open_id">ca-app-pub-3940256099942544/9257395921</string>-->
+<string name="banner_ad_id">ca-app-pub-2472704290232088/4325142489</string>
+    <string name="interstitial_ad_id">ca-app-pub-2472704290232088/8799013038</string>
+    <string name="app_open_id">ca-app-pub-2472704290232088~2329534539</string>
+
+    <string name="ad_app_id">ca-app-pub-2472704290232088~2329534539</string>
+
+    <string name="pub_id">pub-3940256099942544</string>
+
+    <!-- Admob test device id-->
+    <string name="testDevice">33BE2250B43518CCDA7DE426D04EE231</string>
+</resources>
