@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="@dimen/_8sdp"
+    card_view:cardElevation="@dimen/_6sdp"
+    android:layout_margin="@dimen/_6sdp">
+
+    <FrameLayout
+android:background="@color/white"
+        android:layout_width="match_parent"
+
+
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@color/white"
+
+            android:padding="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/imageViewCV"
+                card_view:layout_constraintTop_toTopOf="parent"
+                card_view:layout_constraintLeft_toLeftOf="parent"
+                card_view:cardCornerRadius="@dimen/_100sdp"
+                card_view:cardElevation="@dimen/_3sdp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp">
+                <FrameLayout
+                    android:background="@drawable/bg_image_gradient"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:id="@+id/imageView"
+                        android:src="@drawable/list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                         android:scaleType="centerInside"/>
+                </FrameLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_marginTop="@dimen/_8sdp"
+                card_view:layout_constraintRight_toLeftOf="@+id/arrowCV"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                card_view:layout_constraintTop_toTopOf="parent"
+                card_view:layout_constraintLeft_toRightOf="@+id/imageViewCV"
+                android:id="@+id/titleTV"
+                android:layout_width="0dp"
+android:text="Test"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                android:textColor="@color/colorLoader"
+                android:layout_height="wrap_content"/>
+            <TextView
+android:text="Test"
+                card_view:layout_constraintRight_toLeftOf="@+id/arrowCV"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                card_view:layout_constraintTop_toBottomOf="@+id/titleTV"
+                card_view:layout_constraintLeft_toRightOf="@+id/imageViewCV"
+                android:id="@+id/descriptionTV"
+                android:layout_width="0dp"
+                android:singleLine="true"
+                android:textSize="@dimen/_10sdp"
+
+                android:textColor="@color/colorLoader"
+                android:layout_height="wrap_content"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/arrowCV"
+                card_view:layout_constraintBottom_toBottomOf="@+id/imageViewCV"
+                card_view:layout_constraintTop_toTopOf="@+id/imageViewCV"
+                card_view:layout_constraintRight_toRightOf="parent"
+                card_view:cardCornerRadius="@dimen/_100sdp"
+                card_view:cardElevation="@dimen/_6sdp"
+                android:layout_margin="@dimen/_6sdp"
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp">
+                <FrameLayout
+                    android:background="@drawable/bg_image_gradient"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/right_arrow"
+                        card_view:riv_corner_radius="@dimen/_50sdp"
+                        card_view:riv_border_width="@dimen/_2sdp"
+                        card_view:riv_border_color="#AE8A52EB"
+                        card_view:layout_constraintTop_toTopOf="parent"
+                        card_view:layout_constraintLeft_toLeftOf="parent"
+                        android:id="@+id/arrow"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:scaleType="centerCrop"
+                        card_view:tint="@color/white" />
+                </FrameLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </FrameLayout>
+
+</androidx.cardview.widget.CardView>

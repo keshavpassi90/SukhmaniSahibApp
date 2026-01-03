@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.appoapp.sukhmanisahib.HomeFragment"
+        tools:layout="@layout/fragment_home">
+
+       </fragment>
+    <fragment
+        android:id="@+id/wallpaperFragment"
+        android:name="com.appoapp.sukhmanisahib.WallpaperFragment"
+        tools:layout="@layout/fragment_wallpaper">
+
+    </fragment>
+<fragment
+        android:id="@+id/shabadFragment"
+        android:name="com.appoapp.sukhmanisahib.ShabadFragment"
+        tools:layout="@layout/fragment_shabad">
+
+        </fragment>
+
+    <fragment
+        android:id="@+id/allNitenamsFragment"
+        android:name="com.appoapp.sukhmanisahib.AllNitenamsFragment"
+        tools:layout="@layout/fragment_all_nitenams">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailWallpaperFragment"
+        android:name="com.appoapp.sukhmanisahib.DetailWallpaperFragment"
+        android:label="detailwallpaper">
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.appoapp.sukhmanisahib.SettingFragment"
+        tools:layout="@layout/fragment_settings">
+
+        </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.appoapp.sukhmanisahib.DetailFragment"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="nitnemModel"
+            app:argType="com.appoapp.sukhmanisahib.model.NitnemModel" />
+
+        </fragment>
+</navigation>
