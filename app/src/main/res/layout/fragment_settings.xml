@@ -94,6 +94,8 @@ app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/black"
+
                         android:gravity="start|center_vertical"
                         android:layout_marginTop="7dp"
                         android:textSize="15sp"
@@ -130,6 +132,8 @@ app:layout_constraintBottom_toBottomOf="parent"
                         android:gravity="start|center_vertical"
                         android:layout_marginTop="7dp"
                         android:textSize="15sp"
+                        android:textColor="@color/black"
+
                         android:duplicateParentState="true"/>
 
                 </LinearLayout>
@@ -164,6 +168,8 @@ app:layout_constraintBottom_toBottomOf="parent"
                         android:gravity="start|center_vertical"
                         android:layout_marginTop="7dp"
                         android:textSize="15sp"
+                        android:textColor="@color/black"
+
                         android:duplicateParentState="true"                       android:text="English"
                         />
 
@@ -261,6 +267,8 @@ app:layout_constraintBottom_toBottomOf="parent"
                         android:gravity="start|center_vertical"
                         android:layout_marginTop="7dp"
                         android:textSize="15sp"
+                        android:textColor="@color/black"
+
                         android:text="1.0.0"
                         android:duplicateParentState="true"/>
 

@@ -1,8 +1,12 @@
 package com.appoapp.sukhmanisahib;
 
 import android.content.res.ColorStateList;
+import android.os.Build;
 import android.os.Bundle;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,11 +34,18 @@ public class HomeActivity extends AppCompatActivity {
 
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        MobileAds.initialize(this, initializationStatus -> {});
+
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        binding.adView.loadAd(adRequest);
 
         // 1⃣ Grab the NavHostFragment defined in activity_home.xml
         NavHostFragment navHostFragment = (NavHostFragment)
                 getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-
+        if (navHostFragment == null) {
+            throw new RuntimeException("NavHostFragment not found");
+        }
         // 2⃣ Get its NavController
         navController = navHostFragment.getNavController();
 
@@ -64,13 +75,40 @@ public class HomeActivity extends AppCompatActivity {
         binding.bottomNavigation.setItemIconTintList(colorStateList);
         binding.bottomNavigation.setItemTextColor(colorStateList);
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-            if (destination.getId() == R.id.settingFragment || destination.getId() == R.id.detailFragment|| destination.getId() == R.id.allNitenamsFragment|| destination.getId() == R.id.detailWallpaperFragment) { // yahan apne fragment ka ID daalo
+            if (destination.getId() == R.id.settingFragment || destination.getId() == R.id.detailFragment|| destination.getId() == R.id.allNitenamsFragment|| destination.getId() == R.id.detailWallpaperFragment|| destination.getId() == R.id.webViewFragment) { // yahan apne fragment ka ID daalo
                 binding.bottomNavigation.setVisibility(View.GONE);
+              if(destination.getId() ==R.id.settingFragment|| destination.getId() == R.id.webViewFragment){
+                  binding.adView.setVisibility(View.GONE);   // ✅ AD HIDE
+
+              }else{
+                  binding.adView.setVisibility(View.VISIBLE);   // ✅ AD HIDE
+
+              }
             } else {
                 binding.bottomNavigation.setVisibility(View.VISIBLE);
+                binding.adView.setVisibility(View.VISIBLE);   // ✅ AD HIDE
+
             }
         });
 
+    }
+
+    @Override
+    protected void onPause() {
+        if (binding.adView != null) binding.adView.pause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (binding.adView != null) binding.adView.resume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (binding.adView != null) binding.adView.destroy();
+        super.onDestroy();
     }
 
 

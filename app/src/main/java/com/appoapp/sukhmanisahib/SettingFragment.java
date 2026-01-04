@@ -3,8 +3,10 @@ package com.appoapp.sukhmanisahib;
 import static androidx.core.app.ActivityCompat.recreate;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -45,6 +47,29 @@ public class SettingFragment extends Fragment {
 
     }
 
+    private void shareNow() {
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
+        sharingIntent.putExtra(Intent.EXTRA_TEXT,
+                "Download the app:\nhttps://play.google.com/store/apps/details?id=com.appoapp.sukhmanisahib" );
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+    }
+    private void openRateDialog() {
+        new AlertDialog.Builder(requireActivity())
+                .setTitle("Rate App")
+                .setMessage("Do you want to open Google Play Store?")
+                .setPositiveButton("Yes", (d, w) -> {
+                    Intent i = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("market://details?id=com.appoapp.sukhmanisahib" ));
+                    startActivity(i);
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+
+
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -77,12 +102,55 @@ binding.backRL.setOnClickListener(new View.OnClickListener() {
     }
 });
 
+binding.listItem2.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        shareNow();
+    }
+});
+binding.listItem3.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        openRateDialog();
+    }
+});
+binding.listItem7.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        feedback();
+    }
+});
+binding.listItem6.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        NavHostFragment.findNavController(SettingFragment.this)
+                .navigate(R.id.webViewFragment);
+    }
+});
+binding.listItem5.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent i = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("market://details?id=com.appoapp.sukhmanisahib"));
+        startActivity(i);    }
+
+});
+
 binding.listItemLanguage.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         showLanguageDialog();
     }
 });
+    }
+
+    private void feedback() {
+        Intent Email = new Intent(Intent.ACTION_SENDTO);
+        Email.setData(Uri.parse("mailto:"));
+        Email.putExtra(Intent.EXTRA_EMAIL  , new String[] { getResources().getString(R.string.contact_email) });
+        Email.putExtra(Intent.EXTRA_SUBJECT, "Feedback about Sundar Gutka App!");
+        Email.putExtra(Intent.EXTRA_TEXT, "Dear App Team," + "");
+        startActivity(Intent.createChooser(Email, "Send Feedback:"));
     }
 
     // to get all the app text for Settings only

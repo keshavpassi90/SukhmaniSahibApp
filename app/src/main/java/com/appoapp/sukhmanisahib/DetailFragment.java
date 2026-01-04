@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -15,6 +16,7 @@ import android.widget.SeekBar;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -152,16 +154,30 @@ public class DetailFragment extends Fragment {
 
         });
 
+
+        // Progress color
+        binding. seekBar.getProgressDrawable()
+                .setColorFilter(
+                        ContextCompat.getColor(requireActivity(), R.color.white),
+                        PorterDuff.Mode.SRC_IN
+                );
+
+// Thumb color
+        binding. seekBar.getThumb()
+                .setColorFilter(
+                        ContextCompat.getColor(requireActivity(), R.color.white),
+                        PorterDuff.Mode.SRC_IN
+                );
         binding.seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (musicService != null && fromUser) {
                     musicService.seekTo(progress);
 
-                    // If the player was paused, start it immediately
-                    if (!musicService.isPlaying()) {
-                        musicService.play();
-                    }
+//                    // If the player was paused, start it immediately
+//                    if (!musicService.isPlaying()) {
+//                        musicService.play();
+//                    }
                 }
             }
 

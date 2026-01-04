@@ -20,6 +20,7 @@ import com.appoapp.sukhmanisahib.model.NitnemModel;
 import com.appoapp.sukhmanisahib.repos.AppRepository;
 import com.appoapp.sukhmanisahib.repos.HukamnamaRepository;
 import com.appoapp.sukhmanisahib.repos.NitnemRepository;
+import com.appoapp.sukhmanisahib.utlis.InterstitialAdHelper;
 import com.appoapp.sukhmanisahib.utlis.LanguagePref;
 import com.appoapp.sukhmanisahib.utlis.NetworkUtil;
 import com.appoapp.sukhmanisahib.utlis.NoInternetDialog;
@@ -64,6 +65,8 @@ public class HomeFragment extends Fragment {
             // value not saved yet → default language
             selectedLanguage = "pa";
         }
+        InterstitialAdHelper.loadAd(requireContext());
+
         showLoader();
         getHomeText();
         binding.settings.setOnClickListener(new View.OnClickListener() {
@@ -235,12 +238,16 @@ public class HomeFragment extends Fragment {
         binding.nitenamesRV.setNestedScrollingEnabled(false);
         NitnemAdapter adapter = new NitnemAdapter(baniList,
                 (model, position) -> {
+                    InterstitialAdHelper.showAdIfAvailable(requireActivity(), () -> {
+                        // This runs AFTER the ad is closed (or skipped)
 
-                    Bundle bundle = new Bundle();
-                    bundle.putParcelable("nitnemModel", model);
+                        Bundle bundle = new Bundle();
+                        bundle.putParcelable("nitnemModel", model);
 
-                    NavHostFragment.findNavController(this)
-                            .navigate(R.id.detailFragment, bundle);
+                        NavHostFragment.findNavController(this)
+                                .navigate(R.id.detailFragment, bundle);
+                    });
+
                 },selectedLanguage);
         binding.nitenamesRV.setAdapter(adapter);
 

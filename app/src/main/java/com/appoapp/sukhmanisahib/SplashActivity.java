@@ -2,80 +2,86 @@ package com.appoapp.sukhmanisahib;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 
 public class SplashActivity extends AppCompatActivity {
-    private static final long FALLBACK_TIMEOUT_MS = 3000; // 3 seconds fallback
     private static final int REQUEST_NOTIFICATION_PERMISSION = 101;
 
-    private boolean finished = false;
+    private static final int SPLASH_DELAY = 1200;
+    private static final int REQ_NOTIFICATION = 101;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        new Handler().postDelayed(this::startChecks, SPLASH_DELAY);
 
-        // Ask for notification permission on Android 13+
+
+
+    }
+    private void startChecks() {
+
+        // 🌐 Internet check
+        if (!isInternetAvailable()) {
+            // no internet → still continue (policy safe)
+            SundarGutkaApp.notifySplashReady();
+            return;
+        }
+
+        // 🔔 Notification permission (Android 13+)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
-                    != PackageManager.PERMISSION_GRANTED) {
 
-                requestPermissions(
-                        new String[]{android.Manifest.permission.POST_NOTIFICATIONS},
-                        REQUEST_NOTIFICATION_PERMISSION
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    android.Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED) {
+
+                ActivityCompat.requestPermissions(
+                        this,
+                        new String[]{Manifest.permission.POST_NOTIFICATIONS},
+                        REQ_NOTIFICATION
                 );
-                return; // wait for result before proceeding
+                return;
             }
         }
 
-        proceedWithSplash();
-
+        // ✅ All checks done
+        SundarGutkaApp.notifySplashReady();
     }
 
-    // Handle permission result
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(
+            int requestCode,
+            @NonNull String[] permissions,
+            @NonNull int[] grantResults
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == REQUEST_NOTIFICATION_PERMISSION) {
-            // Continue regardless of grant or deny
-            proceedWithSplash();
+        if (requestCode == REQ_NOTIFICATION) {
+            // Allow / deny — dono case me continue
+            SundarGutkaApp.notifySplashReady();
         }
     }
 
-    // Main splash flow
-    private void proceedWithSplash() {
-
-//        // Try to load and show app open ad
-//        AppOpenAdManager.loadAdAndThen(
-//                this,
-//                () -> AppOpenAdManager.showIfAvailable(
-//                        SplashActivity.this,
-//                        this::goToMain // Callback after dismiss or failure
-//                )
-//        );
-//
-        // Fallback: go to HomeActivity if ad not shown in time
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            if (!finished) {
-                goToMain();
-            }
-        }, FALLBACK_TIMEOUT_MS);
+    private boolean isInternetAvailable() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = cm.getActiveNetworkInfo();
+        return info != null && info.isConnected();
     }
 
-    // Move to main screen
-    private void goToMain() {
-        if (finished) return;
-        finished = true;
-        startActivity(new Intent(this, HomeActivity.class));
-        finish();
-    }
 }
 
 

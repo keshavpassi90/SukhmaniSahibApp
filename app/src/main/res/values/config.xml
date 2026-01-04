@@ -7,20 +7,22 @@
     <string name="home_english">Home</string>
     <string name="wallpapers_english">Wallpapers</string>
     <string name="shabad_english">Shabad</string>
+<string name="contact_email">kpgroupspvt@gmail.com</string>
+<string name="privacy_policy_url">https://www.freeprivacypolicy.com/live/dc6b8cc3-22ad-4688-be93-1c9619426085</string>
 
-
-    <!-- Admob Ad details -->
+<!--      test IDS-->
 <!--    <string name="banner_ad_id">ca-app-pub-3940256099942544/6300978111</string>-->
 <!--    <string name="interstitial_ad_id">ca-app-pub-3940256099942544/1033173712</string>-->
 <!--    <string name="app_open_id">ca-app-pub-3940256099942544/9257395921</string>-->
-<string name="banner_ad_id">ca-app-pub-2472704290232088/4325142489</string>
+
+<!--    <string name="ad_app_id">ca-app-pub-3940256099942544~3176710101</string>-->
+
+<!--      Live IDS-->
+    <string name="banner_ad_id">ca-app-pub-2472704290232088/4325142489</string>
     <string name="interstitial_ad_id">ca-app-pub-2472704290232088/8799013038</string>
-    <string name="app_open_id">ca-app-pub-2472704290232088~2329534539</string>
+    <string name="app_open_id">ca-app-pub-2472704290232088/8437268844</string>
 
     <string name="ad_app_id">ca-app-pub-2472704290232088~2329534539</string>
 
-    <string name="pub_id">pub-3940256099942544</string>
 
-    <!-- Admob test device id-->
-    <string name="testDevice">33BE2250B43518CCDA7DE426D04EE231</string>
 </resources>

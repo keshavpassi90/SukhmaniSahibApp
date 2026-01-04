@@ -23,6 +23,12 @@
         tools:layout="@layout/fragment_shabad">
 
         </fragment>
+<fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.appoapp.sukhmanisahib.WebViewFragment"
+        tools:layout="@layout/fragment_webview">
+
+        </fragment>
 
     <fragment
         android:id="@+id/allNitenamsFragment"
