@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
+import com.appoapp.sukhmanisahib.repos.AppLaunchTracker;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
@@ -45,6 +46,10 @@ public class SundarGutkaApp extends Application implements Application.ActivityL
         MobileAds.initialize(this);
         registerActivityLifecycleCallbacks(this);
         loadAd();
+
+        // 🔥 Track app launch here (once per app open)
+        AppLaunchTracker.trackAppLaunch(this);
+
     }
 
     // ================= SPLASH SIGNAL =================

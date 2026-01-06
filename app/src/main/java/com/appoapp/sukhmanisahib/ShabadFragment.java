@@ -123,8 +123,7 @@ public class ShabadFragment extends Fragment {
         ShabadRepository.observeShabad(new ShabadRepository.Callback() {
             @Override
             public void onSuccess(ArrayList<NitnemModel> list) {
-                int limit = Math.min(3, list.size());
-                baniList = new ArrayList<>(list.subList(0, limit));
+                baniList = list;
                 setUpAdapter();
                 hideLoader();
             }
